@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.sites',
+#    'django.contrib.sites',
     'registration',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'userprofiles',
+    #'userprofiles',
 ]
 
 MIDDLEWARE = [
@@ -138,8 +137,8 @@ LDAP_SERVERS = [
 
 LDAP_ENGINE = 'AD'
 
-LDAP_BIND_USER = "it21420@hua.gr"
-LDAP_BIND_PWD = "0ndr%uz£"
+LDAP_BIND_USER = "ditdemo11@hua.gr"
+LDAP_BIND_PWD = "#dt35bk1#"
 
 LDAP_SEARCH_BASE = "dc=hua,dc=gr"
 LDAP_USER_SEARCH_FILTER = "(&(sAMAccountName=%s)(objectClass=user))"

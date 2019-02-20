@@ -66,6 +66,7 @@ class LDAP3ADBackend(object):
 
     @staticmethod
     def init_and_get_ldap_user(username):
+        print('in init_and_get_ldap_user')
         if username is None or username == '':
             return None, None
 
