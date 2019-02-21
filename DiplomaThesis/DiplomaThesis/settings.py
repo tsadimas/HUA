@@ -32,16 +32,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-#    'django.contrib.sites',
-    'registration',
     'django.contrib.admin',
+    'registration',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'userprofiles',
+    #'userprofiles',,
+    'django_auth_ldap3_ad',
 ]
+
+SITE_ID=1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,20 +133,21 @@ REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
 LDAP_SERVERS = [
     {
         'host': 'hercules.hua.gr',
-        'port': 636,
-        'use_ssl': True,
+        'port': 3268,
+        'use_ssl': False,
     },
 ]
 
 LDAP_ENGINE = 'AD'
 
+
 LDAP_BIND_USER = "ditdemo11@hua.gr"
 LDAP_BIND_PWD = "#dt35bk1#"
 
 LDAP_SEARCH_BASE = "dc=hua,dc=gr"
+
 LDAP_USER_SEARCH_FILTER = "(&(sAMAccountName=%s)(objectClass=user))"
 
-# LDAP_USER_SEARCH_FILTER = '(&(|(userPrincipalName={0})(sAMAccountName={0}))(objectClass=user))'
 
 LDAP_ATTRIBUTES_MAP = {
     'username': 'sAMAccountName',
@@ -161,5 +165,4 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend")
 
 LDAP_USE_LDAP_GROUPS = False
-
 #AUTH_USER_MODEL = 'userprofiles.GAUser'
