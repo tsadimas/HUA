@@ -6,7 +6,7 @@ How to clone this project
 ```git clone https://github.com/GeorgiaVlassi/HUA.git```
 * create a virtual environment
 ```virtualenv -p python3 venv```
-* actievate the virtula environment
+* activate the virtual environment
 ``` source venv/bin/activate```
 * install requirements
 ```pip install -r requirements.txt```
