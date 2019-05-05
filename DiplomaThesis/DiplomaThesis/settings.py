@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -34,17 +33,18 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'registration',
-    'django.contrib.sites',
     'django.contrib.auth',
+    #'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'userprofiles',
+    'userprofiles.apps.UserprofilesConfig',
     'django_auth_ldap3_ad',
+    'romanize',
 ]
 
-SITE_ID=1
+#SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -165,4 +165,5 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend")
 
 LDAP_USE_LDAP_GROUPS = False
-#AUTH_USER_MODEL = 'userprofiles.GAUser'
+
+AUTH_USER_MODEL = 'userprofiles.GAUser'

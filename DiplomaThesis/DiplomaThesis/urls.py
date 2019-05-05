@@ -13,14 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
 from django.contrib import admin
-from django.urls import path
+from userprofiles import views
 from django.conf.urls import url, include
+from django.urls import path
 from django.views.generic import TemplateView
 
-
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='base.html'), name="index"),
-    url(r'^accounts/', include('registration.backends.default.urls')), #To send activation code
+    #url(r'^', include('userprofiles.urls')),
+    url(r'^$', TemplateView.as_view(template_name='base.html')),
+    path('admin/', admin.site.urls),
+    url(r'^accounts/', include('registration.backends.default.urls')), #To auto activate user after registration
+
 ]
