@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_auth_ldap3_ad',
     'romanize',
     'bootstrap4',
+    'jet',
 ]
 
 #SITE_ID = 1
@@ -127,6 +128,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Registration
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.

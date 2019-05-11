@@ -17,12 +17,25 @@ Including another URLconf
 
 from django.contrib import admin
 from django.conf.urls import url, include
+from django.conf import settings
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
+from userprofiles.models import GAUser
+from django.contrib.auth.models import User
+from django.conf.urls.static import static
 from django.views.generic import TemplateView
-from django.urls import path
+from django.contrib.auth.views import logout_then_login
+
 
 urlpatterns = [
 
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name="home"),
+    url(r'^$', TemplateView.as_view(template_name='base.html'), name="home"),
     url(r'^admin/', admin.site.urls),
+    url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^accounts/', include('registration.backends.simple.urls')), #to auto activate user after registration
+    url(r'^accounts/logout/$', lambda request: logout_then_login(request, "/accounts/login"), name='logout'),
+    url(r'^accounts/login/', TemplateView.as_view(template_name='login.html'), name="auth_login"),
+    #url(r'^user/', include('userprofiles.urls', namespace='user'), name='user'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
