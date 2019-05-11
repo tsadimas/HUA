@@ -1,8 +1,78 @@
 {% extends "registration/registration_base.html" %}
+{% load staticfiles static i18n %}
+{% load bootstrap4 %}
 
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block content %}
+
+<div class="col-md-4">
+    <h4>Είσοδος στο σύστημα (Φοιτητής)</h4>
+    <form method="post" action="">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" name="_submit" class="btn">Εισαγωγή</button>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+
+
+</div>
+
+<div class="col-md-8">
+
+
+    <div class="jumbotron">
+        Για να μπείτε στο σύστημα χρησιμοποιήστε το username σας με το οποίο συνδέεστε με όλες τις υπηρεσίες του
+        Πανεπιστημίου (χωρίς το "@hua.gr")
+
+    </div>
+    <div class="jumbotron">
+        <i class="fa fa-university" aria-hidden="true"></i> Είστε Βιβλιοθηκονόμος ή Γραμματεία; <a href="/admin">Μπείτε
+        εδώ</a>.
+    </div>
+
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+    $("#id_username")
+        .focusout(function () {
+            var s = $(this).val();
+            var n = s.indexOf('@');
+            s = s.substring(0, n != -1 ? n : s.length);
+            $(this).val(s);
+        })
+</script>
+
+{% endblock %}
+
+{% comment %}
+**registration/login.html**
+
+It's your responsibility to provide the login form in a template called
+registration/login.html by default. This template gets passed four
+template context variables:
+
+``form``
+A Form object representing the login form. See the forms
+documentation for more on Form objects.
+
+``next``
+The URL to redirect to after successful login. This may contain a
+query string, too.
+
+``site``
+The current Site, according to the SITE_ID setting. If you don't
+have the site framework installed, this will be set to an instance
+of RequestSite, which derives the site name and domain from the
+current HttpRequest.
+
+``site_name``
+An alias for site.name. If you don't have the site framework
+installed, this will be set to the value of
+request.META['SERVER_NAME']. For more on sites, see The
+"sites" framework.
+{% endcomment %}

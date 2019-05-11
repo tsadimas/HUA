@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'userprofiles.apps.UserprofilesConfig',
     'django_auth_ldap3_ad',
     'romanize',
+    'bootstrap4',
 ]
 
 #SITE_ID = 1
@@ -125,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Registration
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
@@ -167,3 +169,5 @@ AUTHENTICATION_BACKENDS = (
 LDAP_USE_LDAP_GROUPS = False
 
 AUTH_USER_MODEL = 'userprofiles.GAUser'
+
+LOGIN_REDIRECT_URL = '/'

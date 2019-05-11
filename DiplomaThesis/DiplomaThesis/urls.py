@@ -16,15 +16,13 @@ Including another URLconf
 
 
 from django.contrib import admin
-from userprofiles import views
 from django.conf.urls import url, include
-from django.urls import path
 from django.views.generic import TemplateView
+from django.urls import path
 
 urlpatterns = [
-    #url(r'^', include('userprofiles.urls')),
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
-    path('admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.default.urls')), #To auto activate user after registration
 
+    url(r'^$', TemplateView.as_view(template_name='home.html'), name="home"),
+    url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('registration.backends.simple.urls')), #to auto activate user after registration
 ]
