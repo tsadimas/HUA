@@ -8,30 +8,47 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Diploma Thesis</title>
+    <title>DiplomaThesis</title>
   </head>
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{url 'home'}">Σύστημα Δήλωσης Πτυχιακών Εργασιών</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+	  <a class="navbar-header">
+		  <a class="navbar-brand" href="{% url 'home' %}">
+			  <img src="media/img/hua.png"  width="40" height="40" class="d-inline-block align-top" alt="">
+          </a>
+      </a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/accounts/login">Login</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+	  <div style="font-size:11px; line-height: 100%;"> Χαροκόπειο Πανεπιστήμιο <br/> Βιβλιοθήκη και Κέντρο Πληροφόρησης <br/>
+		   Σύστημα Δήλωσης Πτυχιακών Εργασιών
+      </div>
 
-    <br/>
-    <div class="container">
-    {% block content %}
-        <h2> Καλώς ορίσατε στο Σύστημα Δήλωσης Πτυχιακών Εργασιών</h2>
-    {% endblock %}
-    </div>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+		  <li class="nav-item">
+			<a class="nav-link" href="/accounts/login">Είσοδος</a>
+		  </li>
+		</ul>
+	  </div>
+    </nav>
+
+	<div class="container">
+		{% block content %}
+			<div class="item">
+						<img src="media/img/laptop-2.jpg">
+						<div class="img-fluid">
+							<p>
+								Καλώς ορίσατε στο Σύστημα Δήλωσης Πτυχιακών Εργασιών του Χαροκόπειου Πανεπιστημίου. Για να εισέλθετε πατήστε πάνω δεξιά.
+							</p>
+						</div>
+			 </div>
+		{% endblock %}
+	</div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

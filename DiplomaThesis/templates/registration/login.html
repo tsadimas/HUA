@@ -4,33 +4,32 @@
 
 {% block title %}{% trans "Log in" %}{% endblock %}
 
+
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Είσοδος στο σύστημα (Φοιτητής)</h4>
+            <form method="post" action="">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" name="_submit" class="btn btn-outline-primary">Εισαγωγή</button>
+                <input type="hidden" name="next" value="{{ next }}"/>
+            </form>
+        </div>
 
-<div class="col-md-4">
-    <h4>Είσοδος στο σύστημα (Φοιτητής)</h4>
-    <form method="post" action="">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <button type="submit" name="_submit" class="btn">Εισαγωγή</button>
-        <input type="hidden" name="next" value="{{ next }}"/>
-    </form>
+        <div class="col-md-8">
+            <div class="jumbotron">
+                Για να μπείτε στο σύστημα χρησιμοποιήστε το username σας με το οποίο συνδέεστε με όλες τις υπηρεσίες του
+                Πανεπιστημίου (χωρίς το "@hua.gr")
 
-
-</div>
-
-<div class="col-md-8">
-
-
-    <div class="jumbotron">
-        Για να μπείτε στο σύστημα χρησιμοποιήστε το username σας με το οποίο συνδέεστε με όλες τις υπηρεσίες του
-        Πανεπιστημίου (χωρίς το "@hua.gr")
-
+            </div>
+            <div class="jumbotron">
+                <i class="fa fa-university" aria-hidden="true"></i> Είστε Καθηγητής ή Γραμματεία; <a href="/admin">Μπείτε
+                εδώ</a>.
+            </div>
+        </div>
     </div>
-    <div class="jumbotron">
-        <i class="fa fa-university" aria-hidden="true"></i> Είστε Βιβλιοθηκονόμος ή Γραμματεία; <a href="/admin">Μπείτε
-        εδώ</a>.
-    </div>
-
 </div>
 {% endblock %}
 
