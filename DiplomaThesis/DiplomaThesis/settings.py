@@ -134,11 +134,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-SECRETARIES = ['daneli', 'itsec', 'itpsec', 'esofou', 'epastrapa', 'hpsd.sec',
-               'ekarage', 'dsec', 'zfoulidi', 'geosec', 'hsec',
-               'vpapad', 'yiannouli', 'ealev', 'gkafala', 'azerva', 'mitsi', 'ifigen']
+SECRETARIES = ['ditdemo13']
 
-PROFESSORS = ['tsadimas', 'vdalakas']
+PROFESSORS = ['ditdemo14']
 
 # Registration
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
