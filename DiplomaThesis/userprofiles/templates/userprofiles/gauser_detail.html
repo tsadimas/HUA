@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block content %}
+
+
+    <table class="table">
+
+        <tr>
+            <td>Τμήμα</td>
+            <td>{{ object.department }}</td>
+        </tr>
+        <tr>
+            <td>Όνομα Ελληνικά</td>
+            <td>{{ object.name_el }}</td>
+        </tr>
+        <tr>
+            <td>Επώνυμο Ελληνικά</td>
+            <td> {{ object.surname_el }}</td>
+        </tr>
+        <tr>
+            <td>Όνομα Αγγλικά</td>
+            <td>{{ object.name_en }}</td>
+        </tr>
+        <tr>
+        <tr>
+            <td>Επώνυμο Αγγλικά</td>
+            <td> {{ object.surname_en }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ object.email }}</td>
+        </tr>
+        <tr>
+            <td>Τίτλος</td>
+            <td> {{ object.title }}</td>
+        </tr>
+    </table>
+{% endblock %}

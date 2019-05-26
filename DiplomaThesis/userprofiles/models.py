@@ -63,8 +63,10 @@ class GAUser(AbstractUser):
         if self.username in settings.PROFESSORS:
             print('is professor')
             self.is_staff = True
-            #permission_topic_add = Permission.objects.get(name='Can add Θέμα')
-            #self.user_permissions.add(permission_topic_add)
+            permission_topic_add = Permission.objects.get(name='Can add Θέμα')
+            self.user_permissions.add(permission_topic_add)
+            permission_topic_change = Permission.objects.get(name='Can change Θέμα')
+            self.user_permissions.add(permission_topic_change)
 
         print(self.first_name)
         print(self.last_name)

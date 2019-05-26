@@ -9,7 +9,13 @@ class StudentForm(forms.ModelForm):
         fields = ('__all__')
 
 
-class TopicForm(forms.TopicForm):
+class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
+        fields = ('__all__')
+
+
+class UpdateView(forms.ModelForm):
+    class Meta:
+        model = Student
         fields = ('__all__')

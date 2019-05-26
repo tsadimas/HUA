@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+{% block content %}
+ <form role="form" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_form_errors form layout='inline' %}
+        {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+    </form>
+
+{% endblock %}
+
+{% block extra_javascript %}
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+{{ form.media }}
+{% endblock %}

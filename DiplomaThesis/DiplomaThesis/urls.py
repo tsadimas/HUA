@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')), #to auto activate user after registration
     url(r'^accounts/logout/$', lambda request: logout_then_login(request, "/accounts/login"), name='logout'),
     url(r'^accounts/login/', TemplateView.as_view(template_name='login.html'), name="auth_login"),
-    #url(r'^user/', include('userprofiles.urls', namespace='user'), name='user'),
+    url(r'^user/', include('userprofiles.urls', namespace='user'), name='user'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 

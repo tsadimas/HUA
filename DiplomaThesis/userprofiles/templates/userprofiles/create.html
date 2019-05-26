@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{ Load CSS and JavaScript }
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{% block content %}
+
+
+<p><a href="{% url 'user:student' %}">{% trans 'Student' %}</a></p>
+
+
+{% endblock %}
