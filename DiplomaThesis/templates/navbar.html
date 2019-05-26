@@ -1,6 +1,6 @@
 {% load i18n %}
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar navbar-expand-lg navbar-light bg-light">
               <a class="navbar-header">
                   <a class="navbar-brand" href="{% url 'home' %}">
                       <img src="media/img/hua.png"  width="40" height="40" class="d-inline-block align-top" alt="">
@@ -34,6 +34,9 @@
                             <li><a href="{% url 'user:profile' user.id %}">
                                 <i class="fa fa-user"></i> Το προφίλ μου</a>
                             </li>
+                            <li><a href="{% url 'user:apply_for_diploma' user.id %}">
+                                <i class="fa fa fa-send"></i> Αίτηση για δήλωση πτυχιακής</a>
+                            </li>
                             <li><a href="{% url 'auth_logout' %}?next={% url 'auth_login' %}">
                                 <i class="fa fa-sign-out"></i> Αποσύνδεση</a>
                             </li>
@@ -44,7 +47,6 @@
                         <li style="vertical-align: center"><a href="{% url 'auth_login' %}">Είσοδος</a></li>
                     </ul>
                 {% endif %}
-
             </ul>
-        </nav>
+        </div>
     </div>

@@ -13,6 +13,10 @@ class GAUserDetailView(DetailView):
     model = GAUser
 
 
+class ApplicantDetailView(DetailView):
+    model = GAUser
+
+
 class GAUserUpdateView(UpdateView):
     model = GAUser
     fields = ['name_el', 'name_en', 'surname_el', 'surname_en', 'title']
@@ -34,7 +38,7 @@ def check(request):
 
     print(request.user)
     print(datetime.now())
-    result = Student.objects.filter(identification_number=request.user, due_to__gte=datetime.now())
+    result=Student.objects.filter(identification_number=request.user,due_to__gte=datetime.now())
     print(result)
     if result:
         return HttpResponseRedirect(reverse('user:profile', kwargs={'pk': request.user.id}))
@@ -44,7 +48,7 @@ def check(request):
 
 def has_complete_profile(user):
     gauser = GAUser.objects.get(id=user.id)
-    if gauser.name_el and gauser.name_en and gauser.surname_el and gauser.surname_en and gauser.department and gauser.title:
+    if gauser.name_el and gauser.name_en and  gauser.surname_el and gauser.surname_en and gauser.department and gauser.title and gauser.father_name_el and gauser.father_name_en:
         print('complete profile')
         if gauser.title in [item[0] for item in TITLE_CHOICES]:
             return True
@@ -53,4 +57,5 @@ def has_complete_profile(user):
     else:
         print('not complete profile')
         return False
+
 

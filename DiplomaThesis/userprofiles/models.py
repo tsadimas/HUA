@@ -31,6 +31,7 @@ class GAUser(AbstractUser):
     name_en = models.CharField(verbose_name=_("Όνομα στα Αγγλικά"), blank=True, null=True, max_length=100, )
     surname_el = models.CharField(verbose_name=_("Επώνυμο στα Ελληνικά"), blank=True, null=True, max_length=100, )
     surname_en = models.CharField(verbose_name=_("Επώνυμο στα Αγγλικά"), blank=True, null=True, max_length=100, )
+    can_take = models.BooleanField(verbose_name=_("Έγκριση Γραμματείας"), default=False)
 
     def __str__(self):
         return self.username
@@ -59,6 +60,10 @@ class GAUser(AbstractUser):
             self.user_permissions.add(permission_student_add)
             permission_student_change = Permission.objects.get(name='Can change Φοιτητής')
             self.user_permissions.add(permission_student_change)
+            permission_student_view = Permission.objects.get(name='Can view Φοιτητής')
+            self.user_permissions.add(permission_student_view)
+            permission_student_delete = Permission.objects.get(name='Can delete Φοιτητής')
+            self.user_permissions.add(permission_student_delete)
 
         if self.username in settings.PROFESSORS:
             print('is professor')
@@ -134,3 +139,5 @@ class Topic(models.Model):
     class Meta:
         verbose_name = 'Θέμα'
         verbose_name_plural = 'Θέματα'
+
+

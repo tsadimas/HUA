@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}{% trans "Apply for Diploma Thesis" %}{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Αίτηση για δήλωση Πτυχιακής Εργασίας</h4>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    Τρέχον Εξάμηνο:<br>
+                    <input type="text" name="εξάμηνο"><br>
+                    Υπολειπόμενα Μαθήματα:<br>
+                    <input type="text" name="υπολειπόμενα" required size="145"> <br>  <br>
+                        <button type="submit" name="_submit" class="btn btn-outline-primary">Υποβολή</button>
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                </form>
+            </div>
+
+            <div class="row1">
+                <div class="jumbotron">
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    Για να κάνετε αίτημα για Πτυχική Εργασία πρέπει να είστε από 6ο εξάμηνο και πάνω,
+                    καθώς και τα υπολειπόμενα μαθήματά σας να μην ξεπερνούν τα πέντε (5)
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
