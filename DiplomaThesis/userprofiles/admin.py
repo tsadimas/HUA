@@ -5,7 +5,10 @@ from django.conf import settings
 
 
 # Register your models here.
-from .models import GAUser, Student, Topic
+from .models import GAUser
+from .models import Student
+from .models import Topic
+from .models import ApplicationForDiploma
 
 
 class GAUserAdmin(admin.ModelAdmin):
@@ -25,3 +28,5 @@ class TopicResource:
 admin.site.register(Student)
 
 admin.site.register(Topic)
+
+admin.site.register(ApplicationForDiploma)

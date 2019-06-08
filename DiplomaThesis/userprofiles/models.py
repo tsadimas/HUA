@@ -126,6 +126,8 @@ class Student(models.Model):
             print('has not passed')
 
         print(self.identification_number)
+        permission_application_add = Permission.objects.get(name='Can add Αίτηση')
+        self.user_permissions.add(permission_application_add)
 
 
 class Topic(models.Model):
@@ -141,3 +143,14 @@ class Topic(models.Model):
         verbose_name_plural = 'Θέματα'
 
 
+class ApplicationForDiploma(models.Model):
+    semester = models.CharField(verbose_name=_("Τρέχον Εξάμηνο:"), max_length=5)
+    left_lessons = models.CharField(verbose_name=_("Υπολοιπόμενα Μαθήματα:"), max_length=200, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Αίτηση'
+        verbose_name_plural = 'Αιτήσεις'
+
+    def save(self, *args, **kwargs):
+        u = super(ApplicationForDiploma, self).save(*args, **kwargs)
+        return u

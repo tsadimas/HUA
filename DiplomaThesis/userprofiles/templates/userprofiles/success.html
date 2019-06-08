@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+{% block content %}
+
+    <div class="jumbotron">
+
+    Η αίτησή σας έχει καταχωρηθεί. <br>
+    Θα λάβατε σύντομα e-mail από τη Γραμματεία για την  εξέλιξη της διαδικασίας.
+
+    </div>
+
+{% endblock %}

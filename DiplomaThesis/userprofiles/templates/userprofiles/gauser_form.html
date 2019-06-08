@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+
+
+   <form role="form" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_form_errors form layout='inline' %}
+        {% buttons submit='Ενημέρωση' reset="Καθαρισμός" %}{% endbuttons %}
+    </form>
+
+{% endblock %}
+
