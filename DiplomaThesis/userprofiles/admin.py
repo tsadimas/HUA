@@ -8,7 +8,7 @@ from django.conf import settings
 from .models import GAUser
 from .models import Student
 from .models import Topic
-from .models import ApplicationForDiploma
+#from .models import ApplicationForDiploma
 
 
 class GAUserAdmin(admin.ModelAdmin):
@@ -29,4 +29,4 @@ admin.site.register(Student)
 
 admin.site.register(Topic)
 
-admin.site.register(ApplicationForDiploma)
+#admin.site.register(ApplicationForDiploma)

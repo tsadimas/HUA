@@ -16,7 +16,3 @@ class TopicForm(forms.ModelForm):
         fields = '__all__'
 
 
-class ApplicationDiplomaForm(forms.ModelForm):
-    class Meta:
-        model = ApplicationForDiploma
-        fields = '__all__'

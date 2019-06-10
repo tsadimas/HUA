@@ -143,14 +143,3 @@ class Topic(models.Model):
         verbose_name_plural = 'Θέματα'
 
 
-class ApplicationForDiploma(models.Model):
-    semester = models.CharField(verbose_name=_("Τρέχον Εξάμηνο:"), max_length=5)
-    left_lessons = models.CharField(verbose_name=_("Υπολοιπόμενα Μαθήματα:"), max_length=200, null=True, blank=True)
-
-    class Meta:
-        verbose_name = 'Αίτηση'
-        verbose_name_plural = 'Αιτήσεις'
-
-    def save(self, *args, **kwargs):
-        u = super(ApplicationForDiploma, self).save(*args, **kwargs)
-        return u

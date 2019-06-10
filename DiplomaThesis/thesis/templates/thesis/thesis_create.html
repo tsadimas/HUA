@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}{% trans "Apply for Diploma Thesis" %}{% endblock title %}
+
+
+{% block content %}
+
+
+{# Display a form #}
+
+<form action="{% url 'thesis:create' %}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    {% endbuttons %}
+</form>
+{% endblock content %}
