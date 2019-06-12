@@ -5,8 +5,7 @@ from django.urls import reverse
 
 from datetime import datetime
 
-from .models import GAUser, Student, ApplicationForDiploma, TITLE_CHOICES
-from .forms import ApplicationDiplomaForm
+from .models import GAUser, Student, TITLE_CHOICES
 # Create your views here.
 
 
@@ -60,30 +59,3 @@ def has_complete_profile(user):
         return False
 
 
-class ApplicationUpdate(UpdateView):
-    model = ApplicationForDiploma
-    fields = ['semester', 'left_lessons']
-
-    def get_success_url(self):
-        return reverse('user:applyfordiploma', kwargs={"pk": self.object.id})
-
-    def get_form(self, form_class=None):
-        form = super(ApplicationUpdate, self).get_form(form_class)
-        form.fields['semester'].required = True
-        return form
-
-
-def applyfordiploma(request):
-
-    print(request.user)
-    print(datetime.now())
-    submitted = False
-    if request.method == "POST":
-        form = ApplicationForDiploma(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/success/')
-    else:
-        form = ApplicationDiplomaForm(initial={'key': 'value'})
-        if 'submitted' in request.GET:
-            submitted = True
-    return render(request, 'userprofiles/applyfordiploma.html', {'form': form, 'submitted': submitted})
