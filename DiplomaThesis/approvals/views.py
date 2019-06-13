@@ -3,13 +3,13 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView, D
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import ThesisApplication
-from .forms import ThesisApplicationForm
+from .models import ApprovalApplication
+from .forms import ApprovalApplicationForm
 
 
-class ThesisApplicationCreate(CreateView):
-    form_class = ThesisApplicationForm
-    template_name = 'thesis/thesis_create.html'
+class ApprovalApplicationCreate(CreateView):
+    form_class = ApprovalApplicationForm
+    template_name = 'approvals/approval_create.html'
     #success_url = ''
     print('--request user --')
 
@@ -32,7 +32,7 @@ class ThesisApplicationCreate(CreateView):
             self.get_context_data(form=form))
 
 
-class ThesisApplicationUpdate(UpdateView):
-    model = ThesisApplication
+class ApprovalApplicationUpdate(UpdateView):
+    model = ApprovalApplication
     fields = '__all__'
-    template_name = 'thesis/thesis_create.html'
+    template_name = 'approvals/approval_create.html'
