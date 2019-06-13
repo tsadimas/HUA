@@ -35,6 +35,8 @@ urlpatterns = [
     url(r'^accounts/logout/$', lambda request: logout_then_login(request, "/accounts/login"), name='logout'),
     url(r'^accounts/login/', TemplateView.as_view(template_name='login.html'), name="auth_login"),
     url(r'^user/', include('userprofiles.urls', namespace='user'), name='user'),
+    url(r'^approvals/', include('approvals.urls', namespace='approvals'), name='approvals'),
+    url(r'^topics/', include('topics.urls', namespace='topics'), name='topics'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 

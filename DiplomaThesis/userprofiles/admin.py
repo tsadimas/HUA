@@ -7,8 +7,6 @@ from django.conf import settings
 # Register your models here.
 from .models import GAUser
 from .models import Student
-from .models import Topic
-#from .models import ApplicationForDiploma
 
 
 class GAUserAdmin(admin.ModelAdmin):
@@ -18,15 +16,4 @@ class GAUserAdmin(admin.ModelAdmin):
 
 admin.site.register(GAUser, GAUserAdmin)
 
-
-class TopicResource:
-    class Meta:
-        model = Topic
-        default_permissions = ('add', 'change')
-
-
 admin.site.register(Student)
-
-admin.site.register(Topic)
-
-#admin.site.register(ApplicationForDiploma)

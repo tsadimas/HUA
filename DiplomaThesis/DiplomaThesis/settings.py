@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'userprofiles.apps.UserprofilesConfig',
+    'approvals',
+    'topics',
     'django_auth_ldap3_ad',
     'romanize',
     'bootstrap4',

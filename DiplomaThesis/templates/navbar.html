@@ -17,6 +17,13 @@
 
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                          <li><a href="{% url 'approvals:create'  %}">
+                                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Αίτηση για δήλωση πτυχιακής" %}</a>
+                          </li>
+                        </ul>
                     <li class="dropdown">
                         <a data-target="#" href="#" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false"><span
@@ -34,9 +41,6 @@
                             <li><a href="{% url 'user:profile' user.id %}">
                                 <i class="fa fa-user"></i> Το προφίλ μου</a>
                             </li>
-                            <li><a href="{% url 'user:applyfordiploma' user.id %}">
-                                <i class="fa fa fa-send"></i> Αίτηση για δήλωση πτυχιακής</a>
-                            </li>
                             <li><a href="{% url 'auth_logout' %}?next={% url 'auth_login' %}">
                                 <i class="fa fa-sign-out"></i> Αποσύνδεση</a>
                             </li>
@@ -47,6 +51,7 @@
                         <li style="vertical-align: center"><a href="{% url 'auth_login' %}">Είσοδος</a></li>
                     </ul>
                 {% endif %}
+                </div>
             </ul>
         </div>
     </div>

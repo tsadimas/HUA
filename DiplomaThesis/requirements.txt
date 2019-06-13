@@ -1,4 +1,4 @@
-Django==2.1.7
+Django==2.1.9
 django-auth-ldap3-ad==1.6.30
 django-registration-redux==2.5
 ldap3==2.5
