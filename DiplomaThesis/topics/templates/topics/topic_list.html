@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}{% trans "List of Topics" %}{% endblock title %}
+
+
+{% block content %}
+
+    {% for t in topics %}
+        <h4>{{ topic.title }}</h4>
+        <h6>{{ topic.description }}</h6>
+        <h6>{{ topic.technologies }}</h6>
+    {% endfor%}
+{% endblock content %}
