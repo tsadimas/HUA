@@ -4,7 +4,7 @@ from .models import Topic
 
 
 def topics_list(request):
-    obj = Topic.objects.order_by('id')
+    obj = Topic.objects.all()
     template_name = 'topics/topic_list.html'
     context = {
         'topic': obj

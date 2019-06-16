@@ -9,10 +9,12 @@
 
 
 {% block content %}
+    <div>
+        {% for t in topic %}
+            <h4>{{ t.title }}</h4>
+            <h6>{{ t.description }}</h6>
+            <h6>{{ t.technologies }}</h6>
+        {% endfor%}
+    </div>
 
-    {% for t in topics %}
-        <h4>{{ topic.title }}</h4>
-        <h6>{{ topic.description }}</h6>
-        <h6>{{ topic.technologies }}</h6>
-    {% endfor%}
 {% endblock content %}
