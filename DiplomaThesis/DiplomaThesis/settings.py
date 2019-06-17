@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'userprofiles.apps.UserprofilesConfig',
     'approvals',
     'topics',
+    'assignments',
     'django_auth_ldap3_ad',
     'romanize',
     'bootstrap4',

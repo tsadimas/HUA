@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^user/', include('userprofiles.urls', namespace='user'), name='user'),
     url(r'^approvals/', include('approvals.urls', namespace='approvals'), name='approvals'),
     url(r'^topics/', include('topics.urls', namespace='topics'), name='topics'),
+    url(r'^assignments/', include('assignments.urls', namespace='assignments'), name='assignments'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
