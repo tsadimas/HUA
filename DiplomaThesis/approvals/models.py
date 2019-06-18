@@ -25,10 +25,15 @@ class ApprovalApplication(models.Model):
     )
     semester = models.CharField(verbose_name=_("Τρέχον Εξάμηνο:"), max_length=5, choices=SEMESTER_CHOICES)
     left_lessons = models.CharField(verbose_name=_("Υπολοιπόμενα Μαθήματα:"), max_length=200, null=True, blank=True)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Έγκριση'
         verbose_name_plural = 'Εγκρίσεις'
+
+
+    def __str__(self):
+        return self.submitter.username
 
     def save(self, *args, **kwargs):
         u = super(ApprovalApplication, self).save(*args, **kwargs)
@@ -36,3 +41,5 @@ class ApprovalApplication(models.Model):
 
     def get_absolute_url(self):
         return reverse('approvals:view', kwargs={'pk': self.pk})
+
+
