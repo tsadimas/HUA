@@ -31,7 +31,6 @@ class ApprovalApplication(models.Model):
         verbose_name = 'Έγκριση'
         verbose_name_plural = 'Εγκρίσεις'
 
-
     def __str__(self):
         return self.submitter.username
 

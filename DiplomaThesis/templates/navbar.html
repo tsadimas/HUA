@@ -25,14 +25,14 @@
 
                     {% if approval %}
                     <ul class="navbar-nav mr-auto">
-                          <li><a href="{% url 'assignments:create'  %}">
+                          <li><a href="{% url 'topics:select'  %}">
                                 <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
                           </li>
                         </ul>
                         {% else %}
                         <ul class="navbar-nav mr-auto">
                           <li><a href="{% url 'approvals:create'  %}">
-                                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Αίτηση για δήλωση πτυχιακής" %}</a>
+                                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Δικαίωμα δήλωσης πτυχιακής" %}</a>
                           </li>
                         </ul>
                     {% endif %}

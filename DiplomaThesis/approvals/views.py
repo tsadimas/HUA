@@ -34,5 +34,5 @@ class ApprovalApplicationCreate(CreateView):
 
 class ApprovalApplicationUpdate(UpdateView):
     model = ApprovalApplication
-    fields = '__all__'
+    fields = {'submitter', 'semester', 'left_lessons'}
     template_name = 'approvals/approval_create.html'
