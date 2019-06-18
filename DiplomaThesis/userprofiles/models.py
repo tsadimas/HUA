@@ -31,7 +31,6 @@ class GAUser(AbstractUser):
     name_en = models.CharField(verbose_name=_("Όνομα στα Αγγλικά"), blank=True, null=True, max_length=100, )
     surname_el = models.CharField(verbose_name=_("Επώνυμο στα Ελληνικά"), blank=True, null=True, max_length=100, )
     surname_en = models.CharField(verbose_name=_("Επώνυμο στα Αγγλικά"), blank=True, null=True, max_length=100, )
-    can_take = models.BooleanField(verbose_name=_("Έγκριση Γραμματείας"), default=False)
 
     def __str__(self):
         return self.username

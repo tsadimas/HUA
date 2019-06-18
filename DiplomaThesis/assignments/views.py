@@ -11,7 +11,7 @@ class AssignmentApplicationCreate(CreateView):
     form_class = AssignmentApplicationForm
     template_name = 'assignments/assignment_create.html'
     #success_url = ''
-    print('--request user --')
+    #print('--request user --')
 
     # def post(self, request, *args, **kwargs):
     #     self.object = None
