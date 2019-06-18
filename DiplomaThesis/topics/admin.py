@@ -12,7 +12,7 @@ class TopicAdmin(admin.ModelAdmin):
     exclude = ['supervisor']
     readonly_fields = ['is_taken']
 
-    def is_taken(selfself,obj):
+    def is_taken(selfself, obj):
         return obj.taken
     is_taken.boolean = True
 
@@ -23,5 +23,6 @@ class TopicAdmin(admin.ModelAdmin):
         if not obj.pk:
             obj.supervisor = request.user
         super().save_model(request, obj, form, change)
+
 
 admin.site.register(Topic, TopicAdmin)

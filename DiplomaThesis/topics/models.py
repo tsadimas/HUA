@@ -17,9 +17,10 @@ class Topic(models.Model):
                                            , max_length=100, )
     supervisor_member_2 = models.CharField(verbose_name=_("Τρίτο Μέλος Τριμελούς Επιτροπής"), blank=True, null=True
                                            , max_length=100, )
+
     def _is_taken(self):
         taken = len(TopicAssignment.objects.all().filter(topic=self.id))
-        if taken >0:
+        if taken > 0:
             return True
         else:
             return False
@@ -33,9 +34,9 @@ class Topic(models.Model):
         verbose_name_plural = 'Θέματα'
 
 
-
 class TopicInterest(models.Model):
-    student = models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name=_("Φοιτητής"), related_name='student', on_delete=models.CASCADE)
+    student = models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name=_("Φοιτητής"), related_name='student',
+                                on_delete=models.CASCADE)
     topic = models.ForeignKey(to=Topic, verbose_name=_("Θέμα"), related_name='topic', on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=now)
 
@@ -49,5 +50,5 @@ class TopicAssignment(models.Model):
     topic = models.OneToOneField(
         Topic,
         on_delete=models.CASCADE,
-        verbose_name=_("Θέμασ")
+        verbose_name=_("Θέμα")
     )

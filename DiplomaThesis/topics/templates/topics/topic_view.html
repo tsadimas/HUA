@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}{{ topic.title }}{% endblock %}
+
+
+{% block content %}
+
+    <h4>{{ topic.title }}</h4>
+    <p><b>Επιβλέπων Καθηγητής: </b>{{ topic.supervisor }}
+    <p><b>Περιγραφή Θέματος: </b>{{ topic.description }}
+    <p><b>Απαιτούμενες Τεχνολογίες: </b>{{ topic.technologies }}
+
+{% endblock content %}

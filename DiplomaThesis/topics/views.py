@@ -3,13 +3,11 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView, D
 from .models import Topic
 
 
-def topics_list(request):
-    obj = Topic.objects.all()
-    template_name = 'topics/topic_list.html'
-    context = {
-        'topic': obj
-    }
-    return render(request, template_name, context)
+class ClassTopicView(UpdateView):
+    model = Topic
+    fields = {'title', 'supervisor'}
+    template_name = 'topics/topic_view.html'
+
 
 def select_topic(request):
     #obj = Topic.objects.all().filter(taken=False)
@@ -21,3 +19,5 @@ def select_topic(request):
         'topic': obj1
     }
     return render(request, template_name, context)
+
+
