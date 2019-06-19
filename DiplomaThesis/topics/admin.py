@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Topic
+from .models import Topic, TopicInterest
 
 
 # class TopicResource:
@@ -26,3 +26,5 @@ class TopicAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Topic, TopicAdmin)
+
+admin.site.register(TopicInterest)

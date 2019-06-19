@@ -10,18 +10,22 @@
 
 {% block content %}
 
-
-    <table class="table table-sm">
-
-        <thead>
-        <th>Πτυχιακές Εργασίες</th>
+    <form method="post">
         {% csrf_token %}
-        </thead>
-            <tbody>
-                {% for t in topic %}
-                    <tr><td><a href="/topics/{{ t.id }}">{{ t.title }}</a></td></tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {{ form.as_ul }}
+        <input type="submit" valus="Save">
+    </form>
+
+{#    <table class="table table-sm">#}
+{#            <thead>#}
+{#            <th>Πτυχιακές Εργασίες</th>#}
+{#            {% csrf_token %}#}
+{#            </thead>#}
+{#            <tbody>#}
+{#                {% for t in topic %}#}
+{#                    <tr><td><a href="/topics/{{ t.id }}">{{ t.title }}</a></td></tr>#}
+{#                {% endfor %}#}
+{#            </tbody>#}
+{#    </table>#}
 
 {% endblock content %}
