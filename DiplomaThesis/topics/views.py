@@ -5,7 +5,7 @@ from .models import Topic, TopicInterest
 from .forms import TopicInterestForm
 
 
-class ClassTopicView(UpdateView):
+class TopicView(UpdateView):
     model = Topic
     fields = {'title', 'supervisor'}
     template_name = 'topics/topic_view.html'
@@ -23,12 +23,12 @@ def select_topic(request):
     if request.method == 'POST':
         form = TopicInterestForm(request.POST)
         if form.is_valid():
-            topicinterest_set = TopicInterest (
-                student=request.user,
+            topicinterest_set = TopicInterest(
+                student=request.user
             )
             topicinterest_set.save()
 
-            topics =form.cleaned_data.get('topics')
+            topics = form.cleaned_data.get('topics')
             topicinterest_set.topic.add(*topics)
             topicinterest_set.save()
             return HttpResponseRedirect('/')
@@ -38,3 +38,8 @@ def select_topic(request):
     form = TopicInterestForm()
     return render(request, template_name, {'form': form})
 
+
+class TopicInterestView(DetailView):
+    model = TopicInterest
+    #fields = {'student', 'title', 'timestamp'}
+    template_name = 'topics/confirmed.html'

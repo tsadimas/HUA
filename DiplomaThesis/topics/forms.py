@@ -16,3 +16,11 @@ def get_topics():
 class TopicInterestForm(forms.Form):
     topics = forms.MultipleChoiceField(choices=get_topics, required=True, widget=forms.CheckboxSelectMultiple)
 
+    def limit_choices(self):
+        value = self.cleaned_data['topics']
+        print('value = ')
+        print(value)
+        if len(value) > 3:
+            raise forms.ValidationError("You can't select more than 3 items.")
+        return value
+

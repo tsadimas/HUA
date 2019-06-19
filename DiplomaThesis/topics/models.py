@@ -37,8 +37,8 @@ class Topic(models.Model):
 
 class TopicInterest(models.Model):
     student = models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name=_("Φοιτητής"), related_name='student',
-                                on_delete=models.CASCADE)
-    topic = models.ManyToManyField(Topic)
+                                on_delete=models.CASCADE, primary_key=True)
+    topic = models.ManyToManyField(Topic, limit_choices_to=3)
     timestamp = models.DateTimeField(default=now)
 
     class Meta:

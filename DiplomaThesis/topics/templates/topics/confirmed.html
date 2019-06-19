@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles static i18n %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+{% block content %}
+
+    <div class="jumbotron">
+    Έχετε δηλώσει ενδιαφέρον για Πτυχιακή Εργασία.<br>
+    Περιμένετε ενημέρωση από τη Γραμματεία του τμήματός σας.
+    </div>
+{{ object.topic.all }}
+
+    {% for t in object.topics.all %}
+        {{ t }}
+    {% endfor %}
+    {{ object.student }}
+{{ object.timestamp }}
+
+    <p><b>Φοιτητής: </b>{{ topic.student.username }}</p>
+    <p><b>Θέματα: </b> {{ topic.topic }}</p>
+    <p><b>Ημερομηνία: </b>{{ topic.timestamp}}</p>
+
+
+{% endblock %}
