@@ -23,6 +23,7 @@
                 {% if user.is_authenticated %}
                     {% has_approval request.user as approval %}
                     {% has_interest request.user as interest %}
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     {% if not approval %}
@@ -30,19 +31,24 @@
                           <li><a href="{% url 'approvals:create'  %}">
                                 <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Δικαίωμα δήλωσης πτυχιακής" %}</a>
                           </li>
-
-                    {% elif not interest %}
+                        {% else %}
+                    {% if  approval and not interest %}
                         <li><a href="{% url 'topics:select'  %}">
                                 <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
                           </li>
+                     {% endif %}
+                    {% if  approval and  interest %}
+                                            {% get_interest_id request.user as interest_id %}
 
-                    {% else %}
-                       <li><a href="{% url 'topics:confirmed' user.id %}">
+                        <li><a href="{% url 'topics:confirmed' interest_id %}">
                                 <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλεγμένα θέματα" %}</a>
                           </li>
+
+
+
                       </ul>
                     {% endif %}
-
+                {% endif %}
                     <li class="dropdown">
                         <a data-target="#" href="#" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false"><span

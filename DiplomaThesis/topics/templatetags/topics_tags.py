@@ -11,3 +11,9 @@ def has_interest(user):
         return True
     else:
         return False
+
+@register.simple_tag
+def get_interest_id(user):
+    int_id = TopicInterest.objects.get(student=user.id)
+    print('int_id ' + str(int_id.id))
+    return int_id.id

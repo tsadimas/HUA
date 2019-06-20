@@ -14,17 +14,20 @@
     Έχετε δηλώσει ενδιαφέρον για Πτυχιακή Εργασία.<br>
     Περιμένετε ενημέρωση από τη Γραμματεία του τμήματός σας.
     </div>
-{{ object.topic.all }}
 
-    {% for t in object.topics.all %}
-        {{ t }}
+
+
+`
+    <p><b>Φοιτητής: </b>{{ object.student }}</p>
+    <p><b>Θέματα: </b>
+    <ul>
+     {% for t in object.topic.all %}
+       <li>{{ t }} </li>
     {% endfor %}
-    {{ object.student }}
-{{ object.timestamp }}
+    </ul>
 
-    <p><b>Φοιτητής: </b>{{ topic.student.username }}</p>
-    <p><b>Θέματα: </b> {{ topic.topic }}</p>
-    <p><b>Ημερομηνία: </b>{{ topic.timestamp}}</p>
+
+    <p><b>Ημερομηνία: </b>{{ object.timestamp}}</p>
 
 
 {% endblock %}
