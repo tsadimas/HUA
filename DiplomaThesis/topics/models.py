@@ -1,11 +1,10 @@
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
-
+from django.utils.timezone import now
 
 import datetime
 
-now = datetime.datetime.now()
 
 
 class Topic(models.Model):
@@ -36,8 +35,11 @@ class Topic(models.Model):
 
 
 class TopicInterest(models.Model):
-    student = models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name=_("Φοιτητής"), related_name='student',
-                                on_delete=models.CASCADE, primary_key=True)
+    student = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name=_("Φοιτητής")
+    )
     topic = models.ManyToManyField(Topic, limit_choices_to=3)
     timestamp = models.DateTimeField(default=now)
 
