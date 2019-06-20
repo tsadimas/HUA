@@ -10,7 +10,7 @@ class TopicForm(forms.ModelForm):
 
 
 def get_topics():
-    return [[x.id, x.title] for x in Topic.objects.all()]
+    return [[x.id, x.title] for x in Topic.objects.filter(assigned_to__isnull=True)]
 
 
 class TopicInterestForm(forms.Form):

@@ -62,8 +62,7 @@ class Topic(models.Model):
     )
 
     def _is_taken(self):
-        taken = len(TopicAssignment.objects.all().filter(topic=self.id))
-        if taken > 0:
+        if self.assigned_to:
             return True
         else:
             return False

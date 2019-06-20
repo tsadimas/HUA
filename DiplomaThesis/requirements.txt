@@ -3,9 +3,11 @@ django-auth-ldap3-ad==1.6.30
 django-bootstrap4==0.0.8
 django-jet==1.0.8
 django-registration-redux==2.5
+django-threadlocals==0.10
 ldap3==2.5
 pyasn1==0.4.4
 pyasn1-modules==0.2.4
 python-ldap==3.1.0
 pytz==2018.9
 six==1.12.0
+sqlparse==0.3.0
