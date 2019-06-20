@@ -10,6 +10,10 @@ class TopicView(UpdateView):
     fields = {'title', 'supervisor'}
     template_name = 'topics/topic_view.html'
 
+class TopicDetailView(DetailView):
+    model = Topic
+    template_name = 'topics/topic_view.html'
+
 
 def select_topic(request):
     # obj = Topic.objects.all().filter(taken=False)
