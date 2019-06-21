@@ -35,11 +35,14 @@ def filter_students():
     print(request)
     a= Topic.objects.filter(Q(supervisor=request.user))
     print(a)
-    topic = Topic.objects.get(pk=numbers[0])
-    ti = TopicInterest.objects.filter(topic=topic)
-    print('ti')
-    print(ti)
-    print('pk')
+    if len(numbers) > 0:
+        topic = Topic.objects.get(pk=numbers[0])
+        ti = TopicInterest.objects.filter(topic=topic)
+        print('ti')
+        print(ti)
+        print('pk')
+    else:
+        ti = ""
     return {'topicinterest__in': ti}
 #
 class Topic(models.Model):
@@ -58,6 +61,7 @@ class Topic(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name=_("Φοιτητής"), null=True, blank=True,
+        default=None,
         limit_choices_to=filter_students
     )
 
