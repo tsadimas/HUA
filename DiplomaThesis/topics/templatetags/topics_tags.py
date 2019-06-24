@@ -12,8 +12,19 @@ def has_interest(user):
     else:
         return False
 
+
 @register.simple_tag
 def get_interest_id(user):
     int_id = TopicInterest.objects.get(student=user.id)
     print('int_id ' + str(int_id.id))
     return int_id.id
+
+
+@register.simple_tag
+def has_been_assigned(user):
+    my_assignment = TopicInterest.objects.get(student=user.topic)
+    if my_assignment:
+        return True
+    else:
+        return False
+

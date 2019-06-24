@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 from django.urls import reverse, reverse_lazy
@@ -10,7 +11,7 @@ from .forms import ApprovalApplicationForm
 class ApprovalApplicationCreate(CreateView):
     form_class = ApprovalApplicationForm
     template_name = 'approvals/approval_create.html'
-    #success_url = ''
+    success_url = reverse_lazy('approvals:status')
     print('--request user --')
 
     # def post(self, request, *args, **kwargs):
@@ -24,7 +25,9 @@ class ApprovalApplicationCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.submitter = self.request.user
-        return super().form_valid(form)
+        #return super().form_valid(form)
+        return super(ApprovalApplicationCreate, self).form_valid(form)
+        #return HttpResponseRedirect('/')
 
     def form_invalid(self, form):
         print('in invalid')

@@ -2,81 +2,72 @@
 {% load approvals_tags %}
 {% load topics_tags %}
 
+<div class="navbar navbar-expand-lg navbar-light bg-light" >
+	<div class="container-fluid">
+		  <div class="navbar-header">
+			  <a class="navbar-brand" href="{% url 'home' %}">
+				  <img src="/media/img/hua.png"  width="40" height="40" class="d-inline-block align-top" alt="">
+			  </a>
+		  </div>
 
-    <div class="container-fluid">
-        <div class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-header">
-                  <a class="navbar-brand" href="{% url 'home' %}">
-                      <img src="/media/img/hua.png"  width="40" height="40" class="d-inline-block align-top" alt="">
-                  </a>
-              </a>
-
-              <div style="font-size:11px; line-height: 100%;"> Χαροκόπειο Πανεπιστήμιο <br/> Βιβλιοθήκη και Κέντρο Πληροφόρησης <br/>
-                   Σύστημα Δήλωσης Πτυχιακών Εργασιών
-              </div>
-
-	         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		        <span class="navbar-toggler-icon"></span>
-             </button>
-
-            <ul class="navbar-nav ml-auto">
-                {% if user.is_authenticated %}
-                    {% has_approval request.user as approval %}
-                    {% has_interest request.user as interest %}
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'home' %}">
+                    <div style="font-size:11px; line-height: 100%;"> Χαροκόπειο Πανεπιστήμιο <br/> Βιβλιοθήκη και Κέντρο Πληροφόρησης <br/>
+                    Σύστημα Δήλωσης Πτυχιακών Εργασιών </div>
+                    </a>
+                </li>
+          </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+                {% has_approval request.user as approval %}
+                {% has_been_approved request.user as approved %}
+                {% has_interest request.user as interest %}
 
                     {% if not approval %}
-                    <ul class="navbar-nav mr-auto">
-                          <li><a href="{% url 'approvals:create'  %}">
-                                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Δικαίωμα δήλωσης πτυχιακής" %}</a>
-                          </li>
-                        {% else %}
-                    {% if  approval and not interest %}
+                        <li><a href="{% url 'approvals:create'  %}">
+                            <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Αίτηση Δήλωσης Πτυχιακής" %}</a>
+                        </li>
+                    {% elif not approved %}
+                        <li><a href="{% url 'approvals:status'  %}">
+			                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Ενημέρωση Κατάστασης" %}</a>
+	                    </li>
+                    {% elif approval and not interest %}
                         <li><a href="{% url 'topics:select'  %}">
-                                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
-                          </li>
-                     {% endif %}
-                    {% if  approval and  interest %}
-                                            {% get_interest_id request.user as interest_id %}
-
-                        <li><a href="{% url 'topics:confirmed' interest_id %}">
-                                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλεγμένα θέματα" %}</a>
-                          </li>
-
-
-
-                      </ul>
-                    {% endif %}
-                {% endif %}
-                    <li class="dropdown">
-                        <a data-target="#" href="#" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false"><span
-                                class="useravatar">
-                            {% if  user.first_name and user.last_name %}
-                            {{ user.first_name }}  {{ user.last_name }}
-                                {% else %}
-                            {{ user }}
-                                {% endif %}</span>
-                            <span class="caret"></span>
-                        </a>
-
-
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="{% url 'user:profile' user.id %}">
-                                <i class="fa fa-user"></i> Το προφίλ μου</a>
-                            </li>
-                            <li><a href="{% url 'auth_logout' %}?next={% url 'auth_login' %}">
-                                <i class="fa fa-sign-out"></i> Αποσύνδεση</a>
-                            </li>
-                        </ul>
-                    </li>
+			                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
+	                    </li>
                     {% else %}
-                    <ul class="navbar-nav mr-auto">
-                        <li style="vertical-align: center"><a href="{% url 'auth_login' %}">Είσοδος</a></li>
+				        {% get_interest_id request.user as interest_id %}
+                        <li><a href="{% url 'topics:confirmed' interest_id %}">
+					    	<i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλεγμένα θέματα" %}</a>
+				        </li>
+			        {% endif %}
+
+
+
+                <li class="dropdown">
+                    <a data-target="#" href="#" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false"><span
+                            class="useravatar">
+                        {% if  user.first_name and user.last_name %}
+                        {{ user.first_name }}  {{ user.last_name }}
+                            {% else %}
+                        {{ user }}
+                            {% endif %}</span>
+                        <span class="caret"></span>
+                    </a>
+
+
+                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li><a href="{% url 'user:profile' user.id %}">
+                            <i class="fa fa-user"></i> Το προφίλ μου</a></li>
+                        <li><a href="{% url 'auth_logout' %}?next={% url 'auth_login' %}">
+                            <i class="fa fa-sign-out"></i> Αποσύνδεση</a></li>
                     </ul>
-                {% endif %}
-                </div>
-            </ul>
-        </div>
-    </div>
+                </li>
+            {% else %}
+                <li style="vertical-align: center"><a href="{% url 'auth_login' %}">Είσοδος</a></li>
+            {% endif %}
+        </ul>
+	</div>
+</div>
+

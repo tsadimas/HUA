@@ -104,7 +104,7 @@ class TopicInterest(models.Model):
         return self.student.username
 
 def regions_changed(sender, **kwargs):
-    if kwargs['instance'].topic.count() > 1:
+    if kwargs['instance'].topic.count() > 3:
         raise ValidationError("You can't assign more than three topics")
 
 

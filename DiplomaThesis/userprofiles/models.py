@@ -63,6 +63,12 @@ class GAUser(AbstractUser):
             self.user_permissions.add(permission_student_view)
             permission_student_delete = Permission.objects.get(name='Can delete Φοιτητής')
             self.user_permissions.add(permission_student_delete)
+            permission_topic_view = Permission.objects.get(name='Can view Θέμα')
+            self.user_permissions.add(permission_topic_view)
+            permission_approvals_view = Permission.objects.get(name='Can view Έγκριση')
+            self.user_permissions.add(permission_approvals_view)
+            permission_approvals_change = Permission.objects.get(name='Can change Έγκριση')
+            self.user_permissions.add(permission_approvals_change)
 
         if self.username in settings.PROFESSORS:
             print('is professor')
@@ -71,10 +77,14 @@ class GAUser(AbstractUser):
             self.user_permissions.add(permission_topic_add)
             permission_topic_change = Permission.objects.get(name='Can change Θέμα')
             self.user_permissions.add(permission_topic_change)
+            permission_topic_view = Permission.objects.get(name='Can view Θέμα')
+            self.user_permissions.add(permission_topic_view)
+            permission_topic_delete = Permission.objects.get(name='Can delete Θέμα')
+            self.user_permissions.add(permission_topic_delete)
 
         print(self.first_name)
         print(self.last_name)
-        print(u)
+        #print(u)
         return u  # save needs to return a `User` object, remember!
 
 
@@ -125,5 +135,7 @@ class Student(models.Model):
             print('has not passed')
 
         print(self.identification_number)
-        permission_application_add = Permission.objects.get(name='Can add Αίτηση')
-        self.user_permissions.add(permission_application_add)
+        permission_approval_add = Permission.objects.get(name='Can add Έγκριση')
+        self.user_permissions.add(permission_approval_add)
+        permission_approval_view = Permission.objects.get(name='Can view Έγκριση')
+        self.user_permissions.add(permission_approval_view)

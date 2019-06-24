@@ -5,7 +5,7 @@ from django.urls import reverse
 
 from datetime import datetime
 
-from .models import GAUser, Student, TITLE_CHOICES
+from .models import GAUser, TITLE_CHOICES
 # Create your views here.
 
 

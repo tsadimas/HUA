@@ -10,6 +10,7 @@ class TopicView(UpdateView):
     fields = {'title', 'supervisor'}
     template_name = 'topics/topic_view.html'
 
+
 class TopicDetailView(DetailView):
     model = Topic
     template_name = 'topics/topic_view.html'
@@ -45,5 +46,11 @@ def select_topic(request):
 
 class TopicInterestView(DetailView):
     model = TopicInterest
-    #fields = {'student', 'title', 'timestamp'}
+    # fields = {'student', 'title', 'timestamp'}
     template_name = 'topics/confirmed.html'
+
+
+class TopicAssignmentView(DetailView):
+    model = TopicInterest
+    # fields = {'student', 'title', 'timestamp'}
+    template_name = 'topics/assignment.html'
