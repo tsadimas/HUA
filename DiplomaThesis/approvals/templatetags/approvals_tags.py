@@ -12,10 +12,11 @@ def has_approval(user):
     else:
         return False
 
+
 @register.simple_tag
 def has_been_approved(user):
     approval = ApprovalApplication.objects.get(submitter=user)
-    if approval:
+    if approval.approved:
         return True
     else:
         return False
