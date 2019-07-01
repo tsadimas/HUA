@@ -22,6 +22,7 @@
                 {% has_approval request.user as approval %}
                 {% has_been_approved request.user as approved %}
                 {% has_interest request.user as interest %}
+                {% has_been_assigned request.user as assignment %}
 
                     {% if not approval %}
                         <li><a href="{% url 'approvals:create'  %}">
@@ -35,14 +36,16 @@
                         <li><a href="{% url 'topics:select'  %}">
 			                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
 	                    </li>
-                    {% else %}
+                    {% elif interest and not assignment %}
 				        {% get_interest_id request.user as interest_id %}
                         <li><a href="{% url 'topics:confirmed' interest_id %}">
 					    	<i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλεγμένα θέματα" %}</a>
 				        </li>
-			        {% endif %}
-
-
+                    {% else %}
+                        <li><a href="{% url 'topics:assignment' user.id %}">
+                            <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Τελική Ανάθεση" %}</a>
+                        </li>
+                     {% endif %}
 
                 <li class="dropdown">
                     <a data-target="#" href="#" data-toggle="dropdown" role="button"

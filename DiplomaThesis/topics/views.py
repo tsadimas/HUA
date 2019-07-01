@@ -51,6 +51,6 @@ class TopicInterestView(DetailView):
 
 
 class TopicAssignmentView(DetailView):
-    model = TopicInterest
+    model = Topic
     # fields = {'student', 'title', 'timestamp'}
     template_name = 'topics/assignment.html'

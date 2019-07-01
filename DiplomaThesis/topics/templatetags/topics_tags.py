@@ -1,5 +1,5 @@
 from django import template
-from topics.models import TopicInterest
+from topics.models import TopicInterest, Topic
 
 register = template.Library()
 
@@ -22,8 +22,8 @@ def get_interest_id(user):
 
 @register.simple_tag
 def has_been_assigned(user):
-    my_assignment = TopicInterest.objects.get(student=user.topic)
-    if my_assignment:
+    my_assignment = Topic.objects.get(assigned_to=user.id)
+    if my_assignment.assigned_to:
         return True
     else:
         return False

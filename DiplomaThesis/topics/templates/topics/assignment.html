@@ -11,18 +11,14 @@
 {% block content %}
 
     <div class="jumbotron">
-    Η τελική ανάθεση θέματος Πτυχιακής Εργασίας.<br>
+    Η τελική σας ανάθεση θέματος Πτυχιακής Εργασίας.<br>
     </div>
 
 
     <p><b>Φοιτητής: </b>{{ object.student }}</p>
-    <p><b>Θέματα: </b>
-    <ul>
-     {% for t in object.topic.all %}
-    <li><a href="{% url 'topics:detail' t.id %}"> {{ t.title }} </a></li>
-    {% endfor %}
-    </ul>
-
+    <p><b>Θέμα Πτυχιακής: </b> {{ t.title }} </p>
+    <p><b>Δεύτερο Μέλος Τριμελούς Επιτροπής: </b>{{ object.supervisor_member_1 }}</p>
+    <p><b>Τρίτο Μέλος Τριμελούς Επιτροπής: </b>{{ object.supervisor_member_2 }}</p>
     <p><b>Ημερομηνία: </b>{{ object.timestamp}}</p>
 
 
