@@ -42,7 +42,7 @@
 					    	<i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλεγμένα θέματα" %}</a>
 				        </li>
                     {% else %}
-                        <li><a href="{% url 'topics:assignment' user.id %}">
+                        <li><a href="{% url 'topics:assignment' assignment %}">
                             <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Τελική Ανάθεση" %}</a>
                         </li>
                      {% endif %}

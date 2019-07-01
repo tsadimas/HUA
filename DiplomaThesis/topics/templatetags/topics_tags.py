@@ -23,8 +23,9 @@ def get_interest_id(user):
 @register.simple_tag
 def has_been_assigned(user):
     my_assignment = Topic.objects.get(assigned_to=user.id)
+
     if my_assignment.assigned_to:
-        return True
+        return my_assignment.id
     else:
-        return False
+        return None
 
