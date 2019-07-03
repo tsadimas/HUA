@@ -6,7 +6,11 @@ register = template.Library()
 
 @register.simple_tag
 def has_approval(user):
-    my_approval = ApprovalApplication.objects.filter(submitter=user)
+    try:
+        my_approval = ApprovalApplication.objects.filter(submitter=user)
+    except ApprovalApplication.DoesNotExist:
+        print('-does not exist-')
+        return False
     if my_approval:
         return True
     else:
@@ -15,7 +19,11 @@ def has_approval(user):
 
 @register.simple_tag
 def has_been_approved(user):
-    approval = ApprovalApplication.objects.get(submitter=user)
+    try:
+        approval = ApprovalApplication.objects.get(submitter=user)
+    except ApprovalApplication.DoesNotExist:
+        print('-does not exist-')
+        return None
     if approval.approved:
         return True
     else:
