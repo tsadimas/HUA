@@ -55,14 +55,6 @@ class GAUser(AbstractUser):
         if self.username in settings.SECRETARIES:
             print('is secretary')
             self.is_staff = True
-            permission_student_add = Permission.objects.get(name='Can add Φοιτητής')
-            self.user_permissions.add(permission_student_add)
-            permission_student_change = Permission.objects.get(name='Can change Φοιτητής')
-            self.user_permissions.add(permission_student_change)
-            permission_student_view = Permission.objects.get(name='Can view Φοιτητής')
-            self.user_permissions.add(permission_student_view)
-            permission_student_delete = Permission.objects.get(name='Can delete Φοιτητής')
-            self.user_permissions.add(permission_student_delete)
             permission_topic_view = Permission.objects.get(name='Can view Θέμα')
             self.user_permissions.add(permission_topic_view)
             permission_approvals_view = Permission.objects.get(name='Can view Έγκριση')
@@ -88,54 +80,3 @@ class GAUser(AbstractUser):
         return u  # save needs to return a `User` object, remember!
 
 
-class Student(models.Model):
-    identification_number = models.CharField(verbose_name=_("Όνομα Χρήστη"), max_length=20, unique=True, )
-    due_to = models.DateTimeField(default=now, null=True, blank=True)
-    secretary = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='secretary')
-
-    def __str__(self):
-        return self.identification_number
-
-    class Meta:
-        verbose_name = 'Φοιτητής'
-        verbose_name_plural = 'Φοιτητές'
-
-    @property
-    def get_email(self):
-        return self.identification_number + '@hua.gr'
-
-    @property
-    def user_name_surname(self):
-        user = GAUser.objects.get(username=self)
-
-        "Returns the user's name and surname"
-        return user.name_el + ' ' + user.surname_el
-
-    user_name_surname.fget.short_description = "Ονοματεπώνυμο"
-
-    def save(self, *args, **kwargs):
-        print('in save')
-        for count, thing in enumerate(args):
-            print('{0}. {1}'.format(count, thing))
-
-        print('instance_id :' + str(self.identification_number))
-
-        u = super(Student, self).save(*args, **kwargs)
-        print('in save student')
-        print('student due date')
-        print(self.due_to)
-        print(now())
-        if self.due_to.tzinfo is None or self.due_to.tzinfo.utcoffset(self.due_to) is None:
-            self.due_to = pytz.utc.localize(self.due_to)
-
-        if self.due_to < now():
-            print('has passed')
-            self.due_to = datetime.strptime(settings.NEXT_DUE_DATE, '%Y-%m-%d')
-        else:
-            print('has not passed')
-
-        print(self.identification_number)
-        permission_approval_add = Permission.objects.get(name='Can add Έγκριση')
-        self.user_permissions.add(permission_approval_add)
-        permission_approval_view = Permission.objects.get(name='Can view Έγκριση')
-        self.user_permissions.add(permission_approval_view)

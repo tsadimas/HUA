@@ -44,9 +44,9 @@ def filter_students():
     else:
         ti = ""
     return {'topicinterest__in': ti}
-#
-class Topic(models.Model):
 
+
+class Topic(models.Model):
 
     supervisor = models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name=_("Καθηγητής"), related_name='supervisor'
                                    , on_delete=models.CASCADE)
@@ -77,7 +77,7 @@ class Topic(models.Model):
 
     @property
     def students(self, obj):
-        topics =  TopicInterest.objects.filter(topic=obj.id)
+        topics = TopicInterest.objects.filter(topic=obj.id)
         students = [t.student for t in topics]
         print(students)
         return students
@@ -103,22 +103,11 @@ class TopicInterest(models.Model):
     def __str__(self):
         return self.student.username
 
+
 def regions_changed(sender, **kwargs):
     if kwargs['instance'].topic.count() > 3:
-        raise ValidationError("You can't assign more than three topics")
+        raise ValidationError("Δεν μπορείτε να δηλώσετε πάνω από τρία θέματα")
 
 
 m2m_changed.connect(regions_changed, sender=TopicInterest.topic.through)
 
-
-class TopicAssignment(models.Model):
-    student = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        verbose_name=_("Φοιτητής")
-    )
-    topic = models.OneToOneField(
-        Topic,
-        on_delete=models.CASCADE,
-        verbose_name=_("Θέμα")
-    )

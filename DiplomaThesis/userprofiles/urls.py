@@ -8,7 +8,7 @@ from . import models
 app_name = 'userprofiles'
 
 urlpatterns = [
-    url(r'^check/$', view=views.check, name='check'),
+    # url(r'^check/$', view=views.check, name='check'),
     url(r'^success/$', TemplateView.as_view(template_name='userprofiles/success.html'), name='success'),
     url(r'^profile/(?P<pk>\w+)/$', view=login_required(views.GAUserDetailView.as_view()), name='profile'),
     url(r'^update/(?P<pk>\w+)/$', view=login_required(views.GAUserUpdateView.as_view()), name='update'),

@@ -6,7 +6,7 @@ from django.conf import settings
 
 # Register your models here.
 from .models import GAUser
-from .models import Student
+#from .models import Student
 
 
 class GAUserAdmin(admin.ModelAdmin):
@@ -16,4 +16,4 @@ class GAUserAdmin(admin.ModelAdmin):
 
 admin.site.register(GAUser, GAUserAdmin)
 
-admin.site.register(Student)
+#admin.site.register(Student)

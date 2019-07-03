@@ -4,20 +4,21 @@
 
 <div class="navbar navbar-expand-lg navbar-light bg-light" >
 	<div class="container-fluid">
-		  <div class="navbar-header">
-			  <a class="navbar-brand" href="{% url 'home' %}">
-				  <img src="/media/img/hua.png"  width="40" height="40" class="d-inline-block align-top" alt="">
-			  </a>
-		  </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="/media/img/hua.png"  width="40" height="40" class="d-inline-block align-top" alt="">
+            </a>
+        </div>
 
-		  <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'home' %}">
-                    <div style="font-size:11px; line-height: 100%;"> Χαροκόπειο Πανεπιστήμιο <br/> Βιβλιοθήκη και Κέντρο Πληροφόρησης <br/>
-                    Σύστημα Δήλωσης Πτυχιακών Εργασιών </div>
-                    </a>
-                </li>
-          </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'home' %}">
+                <div style="font-size:11px; line-height: 100%;"> Χαροκόπειο Πανεπιστήμιο <br/> Βιβλιοθήκη και Κέντρο Πληροφόρησης <br/>
+                Σύστημα Δήλωσης Ανάθεσης Πτυχιακών Εργασιών </div>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mx-auto">
+
             {% if user.is_authenticated %}
                 {% has_approval request.user as approval %}
                 {% has_been_approved request.user as approved %}
@@ -25,28 +26,29 @@
                 {% has_been_assigned request.user as assignment %}
 
                     {% if not approval %}
-                        <li><a href="{% url 'approvals:create'  %}">
-                            <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Αίτηση Δήλωσης Πτυχιακής" %}</a>
+                        <li><a href="{% url 'approvals:create' %}">
+                            <i class="fa fa-edit" aria-hidden="true"></i> {% trans "Αίτηση Δήλωσης Πτυχιακής" %}</a>
                         </li>
                     {% elif not approved %}
-                        <li><a href="{% url 'approvals:status'  %}">
-			                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Ενημέρωση Κατάστασης" %}</a>
-	                    </li>
-                    {% elif approval and not interest %}
-                        <li><a href="{% url 'topics:select'  %}">
-			                <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
-	                    </li>
+                        <li><a href="{% url 'approvals:status' %}">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {% trans "Ενημέρωση Κατάστασης" %}</a>
+                        </li>
+                    {% elif approved and not interest %}
+                        <li><a href="{% url 'topics:select' %}">
+                            <i class="fa fa-edit" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
+                        </li>
                     {% elif interest and not assignment %}
-				        {% get_interest_id request.user as interest_id %}
+                        {% get_interest_id request.user as interest_id %}
                         <li><a href="{% url 'topics:confirmed' interest_id %}">
-					    	<i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Επιλεγμένα θέματα" %}</a>
-				        </li>
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {% trans "Επιλεγμένα θέματα" %}</a>
+                        </li>
                     {% else %}
                         <li><a href="{% url 'topics:assignment' assignment %}">
-                            <i class="fa fa fa-send" aria-hidden="true"></i> {% trans "Τελική Ανάθεση" %}</a>
+                            <i class="fa fa-check-square-o" aria-hidden="true"></i> {% trans "Τελική Ανάθεση" %}</a>
                         </li>
-                     {% endif %}
-
+                         {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-auto">
                 <li class="dropdown">
                     <a data-target="#" href="#" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false"><span
@@ -73,4 +75,3 @@
         </ul>
 	</div>
 </div>
-

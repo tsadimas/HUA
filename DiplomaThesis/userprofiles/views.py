@@ -34,16 +34,16 @@ class GAUserUpdateView(UpdateView):
         return form
 
 
-def check(request):
+# def check(request):
 
-    print(request.user)
-    print(datetime.now())
-    result = Student.objects.filter(identification_number=request.user, due_to__gte=datetime.now())
-    print(result)
-    if result:
-        return HttpResponseRedirect(reverse('user:profile', kwargs={'pk': request.user.id}))
-    else:
-        return HttpResponseRedirect(reverse('user:forbidden'))
+    # print(request.user)
+    # print(datetime.now())
+    # result = Student.objects.filter(identification_number=request.user, due_to__gte=datetime.now())
+    # print(result)
+    # if result:
+    #    return HttpResponseRedirect(reverse('user:profile', kwargs={'pk': request.user.id}))
+    # else:
+    #   return HttpResponseRedirect(reverse('user:forbidden'))
 
 
 def has_complete_profile(user):
