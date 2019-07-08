@@ -16,8 +16,8 @@
                 Σύστημα Δήλωσης Ανάθεσης Πτυχιακών Εργασιών </div>
                 </a>
             </li>
-        </ul>
-        <ul class="navbar-nav mx-auto">
+        </ul>&nbsp;&nbsp;&nbsp;&nbsp;
+        <ul class="navbar-nav ml-auto">
 
             {% if user.is_authenticated %}
                 {% has_approval request.user as approval %}
@@ -34,6 +34,10 @@
                             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {% trans "Ενημέρωση Κατάστασης" %}</a>
                         </li>
                     {% elif approved and not interest %}
+                       {# <li><a href="{% url 'topics:topic_details' %}"> #}
+                            {# <i class="fa fa-tasks" aria-hidden="true"></i> {% trans "Θέματα" %}</a> #}
+                        {# </li> #}
+                        {# &nbsp;&nbsp;&nbsp; #}
                         <li><a href="{% url 'topics:select' %}">
                             <i class="fa fa-edit" aria-hidden="true"></i> {% trans "Επιλογή θέματος" %}</a>
                         </li>
@@ -47,8 +51,7 @@
                             <i class="fa fa-check-square-o" aria-hidden="true"></i> {% trans "Τελική Ανάθεση" %}</a>
                         </li>
                          {% endif %}
-        </ul>
-        <ul class="navbar-nav ml-auto">
+                &nbsp;&nbsp;
                 <li class="dropdown">
                     <a data-target="#" href="#" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false"><span

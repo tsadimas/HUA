@@ -20,7 +20,7 @@
     <p><b>Θέματα: </b>
     <ul>
      {% for t in object.topic.all %}
-    <li><a href="{% url 'topics:detail' t.id %}"> {{ t.title }} </a></li>
+        <li><a href="{% url 'topics:detail' t.id %}"> {{ t.title }} </a></li>
     {% endfor %}
     </ul>
 
