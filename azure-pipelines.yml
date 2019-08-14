@@ -8,13 +8,16 @@ steps:
     versionSpec: '3.x'
     addToPath: true
     architecture: 'x64'
-- task: CmdLine@2
-  inputs:
-    script: 'pip install -r requirements.txt'
 
 - task: CmdLine@2
   inputs:
     script: 'sudo apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev'
+    
+- task: CmdLine@2
+  inputs:
+    script: 'pip install -r requirements.txt'
+
+
   
 - task: ArchiveFiles@2
   inputs:
