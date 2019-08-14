@@ -14,7 +14,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'sudo apt-get install python-ldap'
+    script: 'sudo apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev'
   
 - task: ArchiveFiles@2
   inputs:
