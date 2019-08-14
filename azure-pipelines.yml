@@ -1,6 +1,6 @@
 
 pool:
-  vmImage: 'ubuntu-18.10'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: UsePythonVersion@0
