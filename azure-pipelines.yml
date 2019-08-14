@@ -1,12 +1,12 @@
 # Starter pipeline
-- task: UsePythonVersion@0
+- task: UsePythonVersion
   inputs:
     versionSpec: '3.x'
     addToPath: true
-- task: CmdLine@2
+- task: CmdLine
   inputs:
     script: 'pip install -r requirements.txt'
-- task: ArchiveFiles@2
+- task: ArchiveFiles
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
