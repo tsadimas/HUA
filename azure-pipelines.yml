@@ -1,4 +1,8 @@
-# Starter pipeline
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+steps:
 - task: UsePythonVersion
   inputs:
     versionSpec: '3.x'
