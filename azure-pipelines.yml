@@ -11,6 +11,10 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'pip install -r requirements.txt'
+
+- task: CmdLine@2
+  inputs:
+    script: 'sudo apt-get install python-ldap'
   
 - task: ArchiveFiles@2
   inputs:
